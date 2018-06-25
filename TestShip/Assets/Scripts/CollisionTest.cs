@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Experimental.PlayerLoop;
+//using UnityEngine.Experimental.PlayerLoop;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class CollisionTest : MonoBehaviour {
@@ -35,10 +35,10 @@ public class CollisionTest : MonoBehaviour {
     void OnCollisionEnter2D(Collision2D collisionInfo) {
         Debug.Log(collisionInfo.relativeVelocity);
 
-        for (int i = 0; i < collisionInfo.contactCount; i++) {
-            var contact = collisionInfo.GetContact(i);
-            draws.Add(new DrawPoint(contact));
-        }
+        //for (int i = 0; i < collisionInfo.contactCount; i++) {
+        //    var contact = collisionInfo.GetContact(i);
+        //    draws.Add(new DrawPoint(contact));
+        //}
 
         if (stopOnDraw) {
             Time.timeScale = 0;
