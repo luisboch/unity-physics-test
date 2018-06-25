@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(Rigidbody2D), typeof(PlayerProperties))]
 public class AutoStabilizer : MonoBehaviour {
 
     public float minVelocityToActivate = 50;
@@ -9,17 +9,20 @@ public class AutoStabilizer : MonoBehaviour {
 
     public float stabilizerForce = 5f;
 
-    private Rigidbody2D rigidbody2d;
-
-    private bool working = false;
-    private bool activationControl = false;
-
     public bool isStabilized { get; private set; }
 
     public GameObject activeIcon;
 
+    private bool working = false;
+    private bool activationControl = false;
+
+    private PlayerProperties properties;
+
+    private Rigidbody2D rigidbody2d;
+
     void Start() {
         rigidbody2d = GetComponent<Rigidbody2D>();
+        properties = GetComponent<PlayerProperties>();
     }
 
     void Update() {
@@ -35,7 +38,7 @@ public class AutoStabilizer : MonoBehaviour {
     }
 
     void FixedUpdate() {
-        if (working && enabled) {
+        if (working && enabled && !properties.isCrashed) {
             var abs = Mathf.Abs(rigidbody2d.angularVelocity);
             var vel = rigidbody2d.velocity.magnitude;
 

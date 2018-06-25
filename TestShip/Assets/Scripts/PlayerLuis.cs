@@ -1,7 +1,7 @@
 using UnityEngine;
 
 
-[RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(Rigidbody2D), typeof(AutoStabilizer), typeof(PlayerProperties))]
 public class PlayerLuis : MonoBehaviour {
     private Rigidbody2D rigidbody2d;
     public float power = 10;
@@ -9,19 +9,21 @@ public class PlayerLuis : MonoBehaviour {
     public float maxVel = 50;
 
     private AutoStabilizer stabilizer;
+    private CrashController controller;
+    private PlayerProperties playerProperties;
 
     void Start() {
         rigidbody2d = GetComponent<Rigidbody2D>();
         stabilizer = GetComponent<AutoStabilizer>();
+        playerProperties = GetComponent<PlayerProperties>();
     }
 
     void Update() {
-
     }
 
     void FixedUpdate() {
 
-        if (stabilizer.isStabilized) {
+        if (stabilizer.isStabilized && !playerProperties.isCrashed) {
 
             var vertical = Input.GetAxis("Vertical");
             var direction = rigidbody2d.velocity;
