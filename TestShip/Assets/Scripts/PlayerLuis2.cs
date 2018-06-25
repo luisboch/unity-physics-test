@@ -25,7 +25,8 @@ public class PlayerLuis2 : PhysicsObject {
 
         velocity += force * Time.deltaTime;
 
-        Debug.Log("Force: " + force + "Vel: " + velLenght);
+        Debug.Log(transform.up + " --- " + force);
+        //        Debug.Log("Force: " + force + "Vel: " + velLenght);
 
         var horizontal = Input.GetAxis("Horizontal");
         var rotateBy = rotateSpeed;
