@@ -1,5 +1,3 @@
-using System.Collections;
-using UnityEditor;
 using UnityEngine;
 
 public class PlayerProperties : MonoBehaviour {
@@ -14,8 +12,6 @@ public class PlayerProperties : MonoBehaviour {
 
     public bool isCrashed { get; private set; }
 
-    public GameObject crashedIcon;
-
     private float lastHit = 0f;
 
     void Start() {
@@ -25,10 +21,6 @@ public class PlayerProperties : MonoBehaviour {
 
     void Update() {
         restore();
-
-        if (crashedIcon) {
-            crashedIcon.SetActive(isCrashed);
-        }
 
         if (lastHit < (Time.time - waitAfterHitRestore)  ) {
             canRestore = true;

@@ -9,7 +9,6 @@ public class PlayerLuis : MonoBehaviour {
     public float maxVel = 50;
 
     private AutoStabilizer stabilizer;
-    private CrashController controller;
     private PlayerProperties playerProperties;
 
     void Start() {
