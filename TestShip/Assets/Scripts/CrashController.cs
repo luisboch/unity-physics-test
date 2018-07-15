@@ -17,8 +17,8 @@ public class CrashController : MonoBehaviour {
     void OnCollisionEnter2D(Collision2D collisionInfo) {
         float power = 0f;
 
-        for (int i = 0; i < collisionInfo.contactCount; i++) {
-            var contact = collisionInfo.GetContact(i);
+        for (int i = 0; i < collisionInfo.contacts.Length; i++) {
+            var contact = collisionInfo.contacts[i];
             power += contact.normalImpulse;
         }
 
