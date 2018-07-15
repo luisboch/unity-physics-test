@@ -18,7 +18,6 @@ public class PlayerProperties : MonoBehaviour {
         currentHealth = initialHealth;
     }
 
-
     void Update() {
         restore();
 
