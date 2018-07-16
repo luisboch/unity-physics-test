@@ -28,8 +28,8 @@ public class PlayerLuis : MonoBehaviour {
             var direction = rigidbody2d.velocity;
             var currentVel = direction.magnitude;
             //
-            if (vertical > 0 && (currentVel < maxVel || Vector2.Angle(direction.normalized, transform.up) > 20)) {
-                rigidbody2d.AddForce(new Vector2(transform.up.x, transform.up.y) * power * vertical);
+            if (vertical > 0 && (currentVel < maxVel || Vector2.Angle(direction.normalized, transform.right) > 20)) {
+                rigidbody2d.AddForce(new Vector2(transform.right.x, transform.right.y) * power * vertical);
             }
 
             var horizontal = Input.GetAxis("Horizontal");

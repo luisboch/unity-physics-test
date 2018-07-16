@@ -19,7 +19,7 @@ public class Projectile : DeviceBase {
     override protected void Update() {
         base.Update();
         if (this.enabled) {
-            this.rd.velocity = transform.up * speed;
+            this.rd.velocity = transform.right * speed;
         }
     }
 

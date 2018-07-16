@@ -44,8 +44,8 @@ public class DeviceController : MonoBehaviour {
 
             // Configure
             createdDevice.SetActive(true);
-            createdDevice.transform.position = this.transform.position + ( this.transform.up.normalized * device.distanceFromPlayer);
-            createdDevice.transform.up = this.transform.up;
+            createdDevice.transform.position = this.transform.position + ( this.transform.right.normalized * device.distanceFromPlayer);
+            createdDevice.transform.right = this.transform.right;
             DeviceBase aux = createdDevice.GetComponent<DeviceBase>();
 
             if (aux) {
