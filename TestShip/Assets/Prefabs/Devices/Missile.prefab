@@ -103,8 +103,9 @@ MonoBehaviour:
   reloadTime: 6
   distanceFromPlayer: 2
   lifeTime: 10
-  damage: 30
+  owner: {fileID: 0}
   speed: 10
+  explosion: {fileID: 0}
 --- !u!212 &212498449915219926
 SpriteRenderer:
   m_ObjectHideFlags: 1

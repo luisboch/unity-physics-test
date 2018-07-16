@@ -40,10 +40,8 @@ public class PlayerProperties : MonoBehaviour {
         }
     }
 
-    public void hit(float power) {
-
+    public void hit(float power, GameObject owner) {
         this.currentHealth -= power;
-
         if (this.currentHealth < 0) {
             isCrashed = true;
             canRestore = true;
@@ -52,8 +50,6 @@ public class PlayerProperties : MonoBehaviour {
             lastHit = Time.time;
             canRestore = false;
         }
-
-
     }
 
 }

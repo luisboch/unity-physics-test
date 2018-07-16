@@ -16,12 +16,11 @@ public class DeviceBase : MonoBehaviour {
     [Tooltip("Permite configurar a o tempo de vida do objeto e, apos este tempo passar o metodo \"DestroyMySelf\" será invocado")]
     public float lifeTime = 5f;
 
-    [Header("Quanto esta arma vai aplicar de dano ao alvo (0 para armas de defesa)")]
-    public float damage = 5f;
-
     private bool autoDestroy = true;
 
     protected Rigidbody2D rd;
+
+    public GameObject owner;
 
     protected virtual void Start() {
         rd = GetComponent<Rigidbody2D>();

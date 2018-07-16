@@ -1,12 +1,16 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.iOS;
 
+[RequireComponent(typeof(PlayerProperties))]
 public class DeviceController : MonoBehaviour {
     public DeviceBase[] devices;
 
     private Dictionary<DeviceBase, DeviceShotController> references = new Dictionary<DeviceBase, DeviceShotController>();
+    private PlayerProperties properties;
 
     void Start() {
+        properties = GetComponent<PlayerProperties>();
         for (int i = 0; i < devices.Length; i++) {
             var device = devices[i];
             references.Add(device, new DeviceShotController(device));
@@ -14,13 +18,15 @@ public class DeviceController : MonoBehaviour {
     }
 
     void Update() {
-        for (int i = 0; i < devices.Length; i++) {
-            var device = devices[i];
-            if (device && references.ContainsKey(device)) {
-                DeviceShotController controller = references[device];
-                controller.waitTime -= Time.deltaTime;
-                if (Input.GetButton("Fire" + (i + 1))) {
-                    shoot(device, controller);
+        if (!properties.isCrashed) {
+            for (int i = 0; i < devices.Length; i++) {
+                var device = devices[i];
+                if (device && references.ContainsKey(device)) {
+                    DeviceShotController controller = references[device];
+                    controller.waitTime -= Time.deltaTime;
+                    if (Input.GetButton("Fire" + (i + 1))) {
+                        shoot(device, controller);
+                    }
                 }
             }
         }
@@ -40,6 +46,12 @@ public class DeviceController : MonoBehaviour {
             createdDevice.SetActive(true);
             createdDevice.transform.position = this.transform.position + ( this.transform.up.normalized * device.distanceFromPlayer);
             createdDevice.transform.up = this.transform.up;
+            DeviceBase aux = createdDevice.GetComponent<DeviceBase>();
+
+            if (aux) {
+                aux.owner = this.gameObject;
+            }
+
             controller.lastShot = createdDevice;
 
             // Set to right parent

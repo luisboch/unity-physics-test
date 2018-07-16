@@ -22,6 +22,6 @@ public class CrashController : MonoBehaviour {
             power += contact.normalImpulse;
         }
 
-        properties.hit(power * powerModifier);
+        properties.hit(power * powerModifier, collisionInfo.gameObject);
     }
 }
