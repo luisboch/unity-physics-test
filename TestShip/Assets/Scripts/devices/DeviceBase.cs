@@ -20,6 +20,7 @@ public class DeviceBase : MonoBehaviour {
 
     protected Rigidbody2D rd;
 
+    [Header("[Ignorar] Dono deste dispositivo, utilizado a nível d script")]
     public GameObject owner;
 
     protected virtual void Start() {

@@ -21,6 +21,7 @@ public class Explosion : MonoBehaviour {
     /// </summary>
     private float curLife = 0f;
 
+    [Header("GO que gerou esta explosion ( setado a partir do projétil)")]
     public GameObject owner;
 
     void Start() {

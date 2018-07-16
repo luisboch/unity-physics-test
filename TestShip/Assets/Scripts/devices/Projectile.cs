@@ -1,12 +1,16 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class SimpleShoot : DeviceBase {
+public class Projectile : DeviceBase {
 
     [Header("Velocidade do míssil ao dispara-lo")]
     public float speed;
 
+    [Header("Objeto que será gerado quando este projétil atingir um alvo")]
     public Explosion explosion;
+
+    [Header("Posição onde será gerada a explosão (ignorada quando vazia)")]
+    public Transform explosionPoint;
 
     override protected void Start() {
         base.Start();
@@ -31,7 +35,12 @@ public class SimpleShoot : DeviceBase {
     protected override void DestroyMySelf() {
         if (explosion) {
             var created = Instantiate(explosion.gameObject);
-            created.transform.position = transform.position;
+
+            if (explosionPoint) {
+                created.transform.position = explosionPoint.position;
+            } else {
+                created.transform.position = transform.position;
+            }
             Explosion expl = created.GetComponent<Explosion>();
             expl.owner = this.owner;
             created.transform.parent = transform.parent;
