@@ -14,6 +14,8 @@ public class PlayerProperties : MonoBehaviour {
 
     private float lastHit = 0f;
 
+    public bool shieldActivated = false;
+
     void Start() {
         currentHealth = initialHealth;
     }

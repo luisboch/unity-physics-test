@@ -21,9 +21,7 @@ public class PlayerLuis : MonoBehaviour {
     }
 
     void FixedUpdate() {
-
         if (stabilizer.isStabilized && !playerProperties.isCrashed) {
-
             var vertical = Input.GetAxis("Vertical");
             var direction = rigidbody2d.velocity;
             var currentVel = direction.magnitude;

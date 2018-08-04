@@ -23,6 +23,10 @@ public class DeviceBase : MonoBehaviour {
     [Header("[Ignorar] Dono deste dispositivo, utilizado a nível d script")]
     public GameObject owner;
 
+
+    [Header("Indica que esse dispositivo deve ser anexado ao player (não está solto no \"Mundo\" do jogo, e deve seguir o jogador)")]
+    public bool attachToPlayer;
+
     protected virtual void Start() {
         rd = GetComponent<Rigidbody2D>();
         autoDestroy = lifeTime > 0;

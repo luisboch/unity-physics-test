@@ -44,10 +44,18 @@ public class Explosion : MonoBehaviour {
         float power = curve.Evaluate(curLife);
         if (other != null && other.gameObject != null) {
             if (owner != other.gameObject) {
+                // This object is player and has no shield protecting it?
                 PlayerProperties pl = other.gameObject.GetComponent<PlayerProperties>();
 
-                if (pl) {
+                if (pl && !pl.shieldActivated) {
                     pl.hit(power * damage, owner);
+                }
+
+                // This object is shield??
+                // Then we must to hit it
+                Shield shield = other.gameObject.GetComponent<Shield>();
+                if (shield) {
+                    shield.hit(power * damage, owner);
                 }
             }
         }

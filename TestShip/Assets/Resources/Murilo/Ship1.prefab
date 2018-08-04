@@ -780,6 +780,7 @@ MonoBehaviour:
   onlineRestoreFactor: 3
   restoreFactor: 10
   waitAfterHitRestore: 10
+  shieldActivated: 0
 --- !u!212 &212383104948701838
 SpriteRenderer:
   m_ObjectHideFlags: 1

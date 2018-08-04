@@ -55,7 +55,7 @@ public class DeviceController : MonoBehaviour {
             controller.lastShot = createdDevice;
 
             // Set to right parent
-            createdDevice.transform.parent = this.transform.parent;
+            createdDevice.transform.parent = aux != null && aux.attachToPlayer ? this.transform : this.transform.parent;
         }
     }
 
